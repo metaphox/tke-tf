@@ -5,7 +5,7 @@ output "cluster_id" {
 
 output "cluster_endpoint" {
   description = "Private (intranet) API server endpoint"
-  value       = tencentcloud_kubernetes_cluster.main.cluster_intranet_endpoint
+  value       = tencentcloud_kubernetes_cluster.main.pgw_endpoint
 }
 
 output "kubeconfig" {

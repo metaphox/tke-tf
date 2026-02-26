@@ -25,7 +25,7 @@ variable "cluster_name" {
 variable "kubernetes_version" {
   description = "Kubernetes version for the TKE cluster"
   type        = string
-  default     = "1.30.0"
+  default     = "1.32.2"
 }
 
 variable "vpc_cidr" {
@@ -49,7 +49,7 @@ variable "service_cidr" {
 variable "node_instance_type" {
   description = "CVM instance type for worker nodes"
   type        = string
-  default     = "S5.MEDIUM4"
+  default     = "SA2.MEDIUM2"
 }
 
 variable "node_desired_count" {

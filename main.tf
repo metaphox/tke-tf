@@ -51,17 +51,17 @@ resource "tencentcloud_security_group_rule_set" "nodes" {
 # ─── TKE Managed Cluster ──────────────────────────────────────────────────────
 
 resource "tencentcloud_kubernetes_cluster" "main" {
-  cluster_name         = var.cluster_name
-  cluster_version      = var.kubernetes_version
-  cluster_deploy_type  = "MANAGED_CLUSTER"
-  vpc_id               = tencentcloud_vpc.main.id
-  cluster_cidr         = var.cluster_cidr
-  service_cidr         = var.service_cidr
+  cluster_name        = var.cluster_name
+  cluster_version     = var.kubernetes_version
+  cluster_deploy_type = "MANAGED_CLUSTER"
+  vpc_id              = tencentcloud_vpc.main.id
+  cluster_cidr        = var.cluster_cidr
+  service_cidr        = var.service_cidr
 
   # Private endpoint only — access the API server from within the VPC
-  cluster_internet              = false
-  cluster_intranet              = true
-  cluster_intranet_subnet_id    = tencentcloud_subnet.az1.id
+  cluster_internet           = false
+  cluster_intranet           = true
+  cluster_intranet_subnet_id = tencentcloud_subnet.az1.id
 }
 
 # ─── Node Pool ────────────────────────────────────────────────────────────────
@@ -76,10 +76,10 @@ resource "tencentcloud_kubernetes_node_pool" "main" {
   desired_capacity = var.node_desired_count
 
   auto_scaling_config {
-    instance_type      = var.node_instance_type
-    system_disk_type   = "CLOUD_PREMIUM"
-    system_disk_size   = 50
-    security_group_ids = [tencentcloud_security_group.nodes.id]
-    password           = var.node_password
+    instance_type              = var.node_instance_type
+    system_disk_type           = "CLOUD_PREMIUM"
+    system_disk_size           = 50
+    orderly_security_group_ids = [tencentcloud_security_group.nodes.id]
+    password                   = var.node_password
   }
 }
